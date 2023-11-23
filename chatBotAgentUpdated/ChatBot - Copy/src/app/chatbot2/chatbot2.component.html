@@ -1,0 +1,300 @@
+<!-- <IMG ELEMENT="IMG" CLASS="LAZY-IMG-LOADED" ID="CHATBOT-LOGO" ALT="ICICI LOGO" SRC="HTTPS://STORAGE.GOOGLEAPIS.COM/IBANK-CCAI-IPAL-IMAGES/IPAL-BOT-ICONS/ICICI-ICON.ICO?X-GOOG-ALGORITHM=GOOG4-RSA-SHA256&AMP;X-GOOG-CREDENTIAL=SAC-APP-CONNECTOR-PROD%40IBANK-CCAI-PROD.IAM.GSERVICEACCOUNT.COM%2F20230912%2FAUTO%2FSTORAGE%2FGOOG4_REQUEST&AMP;X-GOOG-DATE=20230912T041710Z&AMP;X-GOOG-EXPIRES=36000&AMP;X-GOOG-SIGNEDHEADERS=HOST&AMP;X-GOOG-SIGNATURE=7F3F0B4D012B582B4AA88031536036899E3519945986CD4BE852FD31522E8BA66BE6EBAFBD12431266BAB2A35FA00CE33C23C4CB387387EDC4969BE33F185253357FE11CD9778D75AFC6E3EB665E3F02149E5797E64AE050AC064C5FA379B08EAEA6DEFEACA95562F9C78B47403CBDA3C204E081E62284B1832E34E0F81867C43909B810C1AB1180A6E003D6651F89B77811BBB1B35B710AC5B31F71428C783DF6F5361A1FA5D80ABFA2EA4DD2B8243B26904536BA0839DEC5476CA99EF6B90EF9FEB00379DBCB164B53229347EDEDC41261F27AF70FA9BE80DD2C117D315F23DA9D2ACB38EF2D0526A6C9C819AFE1C3ED0961C8EA62C28E4C42C89701CD3936"> -->
+<!-- src="assets\img\flower.png" -->
+
+
+
+
+
+
+
+<nav class="navbar navbar-expand navbar-light navbar-bg col-md-12 md-xs-12" [style.background-color]="this.themeColor"
+  style="height: 50px;position:fixed;z-index: 10;">
+
+  <div class="col-md-1 col-xs-1">
+
+    <a class="sidebar-toggle" (click)="toggleWidth()">
+
+
+
+      <i class="hamburger align-self-center"></i>
+
+
+
+    </a>
+
+  </div>
+
+  <div class="col-md-4 col-xs-4">
+
+    <form class="d-none d-sm-inline-block">
+
+
+
+      <div class="input-group input-group-navbar">
+
+
+
+        <div class="row" id="header">
+
+
+
+          <!-- <nav class="navbar navbar-expand navbar-light navbar-bg" [style.background-color]="this.themeColor" style="height: 45px;left:24%"> -->
+
+
+
+          <div class="container-fluid">
+
+
+
+            <a class="navbar-brand">
+
+
+
+              <img [src]="this.ProfileURL" class="me-2" height="40" width="40" />
+
+
+
+              <label style="font-size: larger;font-weight: bold;padding-left: 5%;"> {{this.chatBot.ChatBotName}}
+              </label>
+
+
+
+            </a>
+
+
+
+          </div>
+
+
+
+          <!-- </nav> -->
+
+
+
+        </div>
+
+
+
+      </div>
+
+
+
+    </form>
+
+  </div>
+
+  <div class="col-md-4 col-xs-4" [style.margin-left]="usernameLeftMargin">
+
+    <div class="navbar-collapse collapse" style="align-items: baseline;">
+
+
+
+      <ul class="navbar-nav navbar-align">
+
+        <a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
+
+
+
+          <!-- <img [src]="this.ProfileURL" style=" height: 20px; width:20" class="avatar img-fluid rounded-circle me-1"/>  -->
+
+          <span class="text-dark"><B>{{this.agentName}}</B> </span>
+
+
+
+        </a>
+
+
+
+        <div class="dropdown-menu dropdown-menu-end" [style.margin-right]="usernameRightMargin"
+          style="margin-top: 2.5%;">
+
+
+
+          <a class="dropdown-item"><i class="align-middle me-1" data-feather="user"></i> Profile</a>
+
+          <a class="dropdown-item" (click)="signout()">Sign out</a>
+
+        </div>
+
+
+
+      </ul>
+
+      <label class="switch" [attr.title]="toggleValue ? 'Available' : 'Not Available'" data-toggle="tooltip"
+        data-placement="top">
+
+
+
+        <input type="checkbox" [(ngModel)]="toggleValue" (change)="onToggleChange()">
+
+
+
+        <span class="slider round" style="height: 30px;    height: 23px;
+        WIDTH: 37px;"></span>
+
+
+
+      </label>
+
+    </div>
+  </div>
+
+</nav>
+<main class="content">
+  <div class="container-fluid" style="resize: none;overflow-x:hidden; ">
+    <!-- <div class="row" id="header">
+        <nav class="navbar navbar-expand navbar-light navbar-bg fixed-top" [style.background-color]="this.themeColor" style="height: 45px;left:19.95%">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                    <img  [src]="this.ProfileURL"
+                    class="me-2"
+                    height="40"
+                    width="40"
+                    alt=""
+                    loading="lazy"
+                    
+                    />
+                 
+                    <label style="font-size: larger;font-weight: bold;padding-left: 5%;"> {{this.chatBot.ChatBotName}}    </label>
+
+                </a>
+
+            </div>
+
+        </nav>
+    </div> -->
+    <div class="scroll-to-top" (click)="scrollToTop()" *ngIf="showScrollButton">
+      <img style="width: 25px;height: 25px;" src="assets\img\scrollToTop1.png">
+    </div>
+    <div class="scroll-to-bottom" (click)="scrollToBottom()" *ngIf="showScrollBottomButton">
+      <img style="width: 25px;height: 25px;" src="assets\img\scrollToBottom.png">
+    </div>
+    <div id="containt" style="margin-top: 5%;">
+      <label class="form-label message to " id="lblStartMsg" style="font-size: 14px;">
+        <div style="position: relative; margin-top: 1.5%;">
+          <img *ngIf="this.ImageURL!=null" src={{this.ImageURL}}
+            style="    width: -webkit-fill-available; border-radius: 15px 15px 15px 15px;">
+          <br>
+
+
+          <video id="player" *ngIf="this.VideoURL!=null" controls
+            style='border: solid 2px black;width: -webkit-fill-available; border-radius: 15px 15px 15px 15px;'
+            [src]='this.VideoURL' loop>
+          </video>
+          <!-- <app-chatbot3></app-chatbot3> -->
+          <!-- <iframe *ngIf="this.VideoURL==null" id='existing-iframe-example'  [src]='this.VideoURL'   style='border: solid 2px black;width: -webkit-fill-available; border-radius: 15px 15px 15px 15px;' frameborder='0' allowfullscreen='false'></iframe>  -->
+        </div>
+        <!-- <iframe 
+            src='this.VideoURL| safe'
+            width="100%" height="518vh" 
+            frameborder="0" 
+            allowfullscreen 
+            webkitallowfullscreen 
+            mozallowfullscreen>
+            </iframe> -->
+        <!-- <video controls>
+            <source src="movie.mp4" type="video/mp4">
+            <source src="movie.ogg" type="video/ogg">
+            Your browser does not support the video tag.
+          </video> -->
+        <p style="margin-top: 1%;">
+          {{this.question.Question}}
+        </p>
+      </label><br>
+      <!-- <button  ngClass= "optnbtn" [style.--chat-title-color]="this.themeColor" *ngFor="let answer of this.answers" (click)="onButtonClick($event)" value={{answer.fk_nextquestionid}}>
+            {{ answer.Answer }}
+          </button> -->
+    </div>
+
+
+    <div id="containt1">
+      <ng-container *ngFor="let message of messages"
+        style="font-size: .825rem;width:100%;display: flex;justify-content: flex-end; align-items:flex-end; align-content: flex-end; align-self: flex-end;">
+        <div class="iconimg" [ngClass]="{ 
+            'fromchat': message.type === 'Received_message',
+            'tochat': message.type === 'send_message',
+            'from': message.author === 'user',
+            'to': message.author === 'bot',
+        }">
+
+          <img *ngIf="message.type === 'Received_message'"
+            src="http://webwhatsapp.sms123.in/ChatbotProfile/ChatBotUserIcon.png" width="20" height="20">
+          <img *ngIf="message.author === 'user'" [src]="this.ProfileURL" width="20" height="20">
+          <img *ngIf="message.author === 'bot'" src="http://webwhatsapp.sms123.in/ChatbotProfile/ChatBotUserIcon.png"
+            width="20" height="20">
+          <img *ngIf="message.type === 'send_message' " [src]="this.ProfileURL" width="20" height="20">
+          <!-- <img  src="http://webwhatsapp.sms123.in/ChatbotProfile/ChatBotUserIcon.png" width="20" height="20"   > -->
+        </div>
+        <div class="message" [ngClass]="{ 
+            'fromchat': message.type === 'Received_message' ,
+            'tochat': message.type === 'send_message' ,
+            'from': message.author === 'user',
+            'to': message.author === 'bot',}">
+          {{ message.content }}
+          {{ message.message }}
+          <!-- {{this.chatBot1.question}} -->
+          <!-- <button  (click)="onButtonClick($event)" value={{this.question1.fk_nextquestionid}}>
+              {{this.question1.Answer }}
+            </button> -->
+
+        </div>
+        <div class="Timestamp" [ngClass]="{ 
+              'fromchat': message.type === 'Received_message',
+              'tochat': message.type === 'send_message' ,
+              'from': message.author === 'user',
+              'to': message.author === 'bot' }">
+          {{ message.Timestamp }}
+          {{ message.currentDate }}
+          <img *ngIf="message.type === 'send_message' && message.seenStatus === 'singletik' "
+            src="assets\img\gray_singletick.png" width="15" height="15">
+          <img *ngIf="message.type === 'send_message'&& message.seenStatus === 'doubletik' "
+            src="assets\img\gray_doubletick.png" width="15" height="10">
+          <img *ngIf="message.type === 'send_message'&& message.seenStatus === 'bluetik' "
+            src="assets\img\blue_doubletick.png" width="15" height="10">
+        </div>
+
+      </ng-container>
+
+      <!-- <button   ngClass= "optnbtn"   [style.--chat-title-color]="this.themeColor"  *ngFor="let answer of this.Answers[0]" style=" margin-top: 1%;font-size: 12px;" (click)="onButtonClick($event)" value={{answer.fk_nextquestionid}} >
+                {{answer.Answer }}
+              </button> -->
+      <!-- <label class="form-label" id="lblStartMsg" style="font-size: large;">
+          {{this.chatBot1.question}}
+        </label> -->
+      <!-- <button  (click)="onButtonClick($event)" value={{this.question1.fk_nextquestionid}}>
+            {{this.question1.Answer }}
+          </button> -->
+    </div>
+
+  </div>
+  <div *ngIf="messageBox" class="input1" style="display: flex;justify-content: space-between;
+  flex-direction: row;
+  position: fixed;
+  bottom: 0;
+  padding-top : 0.3%;
+  padding-bottom : 0%;
+  margin-bottom:0% ;
+  transition: width 0.3s; border-top:2px solid rgb(172, 170, 170);background-color: white; max-width: 100%;" [style.min-width]="this.inputBoxWidth">
+      <!-- <input [(ngModel)]="messageText" class="input" placeholder="Type your message" (keyup.enter)="sendPrivateMessage(receiverId, messageText)" style="height:40px;" /> -->
+<div *ngIf="isTyping" class="typing-indicator indicate">
+<div class="dot-1"></div>
+<div class="dot-2"></div>
+<div class="dot-3"></div>
+<!-- <div style="font-size:15px;color: black; margin-top:-6px;">User is Typing</div> -->
+</div>
+<input [(ngModel)]="messageText" class="input" placeholder="Type your message"
+(keyup.enter)="sendPrivateMessage(receiverId, messageText)" style="height:40px;border: none;background-color: white;" />
+<img class="micBtn" src="assets\img\micIcon.png" alt="Mic Icon" style="height: 30px; margin-right: 1%;">
+<img class="msgSendBtn" (click)="sendPrivateMessage(receiverId, messageText)" src="assets\img\send-message.png" alt="Send Message Icon" [style.margin-right]='this.iconsMargin'>
+ 
+ 
+<!-- <button (click)="sendPrivateMessage(receiverId, messageText)">Send</button> -->
+<!-- <img style="width: 30px; margin-left:0.4%;" (click)="sendPrivateMessage(receiverId, messageText)"
+src="assets\img\send-message.png"> -->
+<!-- {{ messageText }} -->
+</div>
+
+</main>
+<div class="notification" [ngClass]="{'show': showNotification}">
+  {{ message }}
+</div>

@@ -1,0 +1,79 @@
+
+<div class="sidebar-content js-simplebar">
+
+  
+
+
+        <div class="dropdown row position-fixed" style="z-index: 1; background-color: #293042;width: auto;">
+            
+            <div class="col-md-2" >
+      
+            <img [src]="profileURL" style="width: 30px;height: 30px;margin-top: 15px;margin-left: 10px;" alt="Dropdown Image" class="dropdown-image" (click)="toggleDropdown()">
+
+            <div style="margin-left: 9%;width: 80%;"  [ngClass]="{'dropdown-menu': true, 'show': isDropdownOpen}" (clickOutside)="closeDropdown()">
+          
+              <a class="dropdown-item" style="margin-left: -16px;" *ngFor="let chatbot of Chatbots"
+          
+                href="javascript:void(0);" (click)="onClickFunction(chatbot)" (contextmenu)="onRightClick($event, chatbot); ">
+          
+                <img style="width: 18px;height: 18px; margin-right: 10px;" [src]="chatbot.profileURL" alt="profileImage">
+          
+                {{ chatbot.ChatbotName }}
+                <button  *ngIf="chatbot.UnreadCount > 0 " style="color: rgb(255, 255, 255);background-color: rgb(61, 112, 179);border-radius: 20%; padding: 0.5px 1px;border-color: rgb(61, 112, 179);">{{chatbot.UnreadCount}}</button>
+              </a>
+          
+            </div>
+        </div>
+        <div class="col-md-10">
+           <!-- <span class="align-middle me-3"> -->
+            <label style="font-size: x-large; color: aliceblue; margin-top: 10px;"  >Nuevas Chatbot</label>
+            
+        </div>
+        
+        </div> 
+  
+    <!-- <ul id="style-1" class="sidebar-nav position-fixed col-md-2" style="padding-left: 0rem;margin-top: 3.4%;overflow-y: scroll;height: 630px;    min-width: 20.2%;
+    max-width: 100%"> -->
+    <ul id="style-1" class="sidebar-nav position-fixed col-md-2" style="padding-left: 0rem;margin-top:50px;overflow-y: scroll;overflow-x: hidden;height: 100%;min-width: 260px;
+    max-width: 260px;">  
+    <li *ngFor="let item of items"  class="sidebar-item"  (click)="showMessages($event,item)" [class.active]="item.ActiveStatus === 'online'"
+     [style]="DashboardStyle" 
+     style="width: 100%;margin-left:2% ;" 
+     [class.active]="item.ActiveStatus === 'online'" [style]="DashboardStyle" 
+     >
+      <!-- data-bs-toggle="collapse" -->
+      <a data-bs-target="#dashboards"  class="sidebar-link" 
+      [style.color]="isClickedItem(item) ? color : ''"
+       [style.background-color]="isClickedItem(item) ? backcolor : ''">
+        <!-- <i *ngIf="item.ActiveStatus === 'online'" class="green-dot"></i> -->
+        <i [ngClass]="{'green-dot': item.ActiveStatus === 'online', 'blue-dot': item.ActiveStatus !== 'online'}"></i>
+        <img src="http://webwhatsapp.sms123.in/ChatbotProfile/user3.png" width="20" height="20" (click)="toggleEditDropdown($event,item)">
+        <i class="align-middle" data-feather="sliders"></i>
+        <span class="align-middle" >
+        <!-- <span class="align-middle" (click)="showMessages($event,item)"> -->
+          {{ item.EditedUserName!=null ? item.EditedUserName : item.DefaultUsername }}
+        </span>
+        <!-- <label class="showTyping" *ngIf="item.isTyping == true" >Typing ...</label> -->
+        <!-- && this.countVisible===true -->
+        <span class="badge badge-sidebar-primary" *ngIf="item.msgcnt > 0"
+           style="margin-right: 2%;">{{ item.msgcnt }}</span>   
+                <div class="row" style="margin-left: 0px;" *ngIf="item.isDropdownOpen"  (clickOutside)="closeEditDropdown($event,item)">
+          <!-- <a class="dropdown-item" style="margin-left: -16px;" href="javascript:void(0);" (click)="MarkUserImportant()">
+            Mark User as Important
+          </a> -->
+          <div class="col-sx-12" >
+            <div class="col-sx-6" >
+                <input [(ngModel)]="Editedname" placeholder="Type new username"/>
+            </div>
+            <div class="col-sx-2" > 
+                <button id="btneditUsername" (click)="EditUsername(item)" >Edit</button>
+                <button id="btnCanceleditUsername" (click)="toggleEditDropdown($event,item)" >Cancel</button>
+            </div>
+          </div>
+        </div>
+      </a>
+    </li>
+      
+    </ul>
+
+</div>

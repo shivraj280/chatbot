@@ -1,0 +1,140 @@
+.myclass1
+
+{
+
+ visibility: hidden;
+
+
+
+
+}
+
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: .35rem 1.5rem;
+    clear: both;
+    font-weight: 400;
+    color: #495057;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0
+}
+.green-dot {
+    background-color: rgb(62, 236, 62);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+   
+   
+  }
+   .blue-dot {
+
+    background-color: rgb(22, 12, 66);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+
+  }
+  .sidebar-link:hover{
+
+    background-color:rgb(75 79 85) ;
+
+    color:white;
+
+  }
+  
+
+  l
+
+
+   
+   
+   
+  #style-1::-webkit-scrollbar-track
+   
+  {
+   
+      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+   
+      border-radius: 10px;
+   
+      background-color: #F5F5F5;
+   
+  }
+   
+   
+   
+  #style-1::-webkit-scrollbar
+   
+  {
+   
+      width: 12px;
+   
+      background-color: #293042;
+   
+  }
+   
+   
+   
+
+   
+  #style-1::-webkit-scrollbar-track
+   
+  {
+   
+      /* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); */
+   
+      /* border-radius: 0px; */
+   
+      background-color: #293042;
+   
+  }
+   
+   
+   
+  #style-1::-webkit-scrollbar
+   
+  {
+          width: 8px;
+      background-color:#293042;
+   
+  }
+   
+   
+   
+  #style-1::-webkit-scrollbar-thumb
+  {
+      /* border-radius: 0px; */
+      /* -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3); */
+      /* background-color: #d7d6d6; */
+      background-color: #293042;
+  }
+   
+   
+  #style-1:hover::-webkit-scrollbar-thumb{
+      /* background-color: gray; */
+      border-radius: 10px;
+      background-color:    #a19f9f;
+  }
+
+   .showTyping{
+  color:#25D366;
+  margin-left: 25px;
+  animation: typing-dot 1s infinite;
+   }
+   @keyframes typing-dot {
+    0%, 80%, 100% {
+      transform: scale(0);
+    }
+    40% {
+      transform: scale(1);
+    }
+  }
+   
+  .row>*{
+    width:auto;
+  }
